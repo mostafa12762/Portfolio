@@ -31,6 +31,9 @@
   "jobTitle": "SOC Analyst",
   "description": "Cybersecurity Enthusiast specializing in SOC Operations, Threat Detection, and Web Security.",
   "url": "https://mostafanader.dev/",
+  "email": "mos014d@gmail.com",
+  "sameAs": ["https://linkedin.com/in/esasa11"],
+  "alumniOf": "Faculty of Artificial Intelligence, Menoufia University",
   "knowsAbout": ["SOC Operations", "Threat Detection", "Incident Response", "Network Security", "Web Application Security", "Penetration Testing"]
 }
 </script>
@@ -506,7 +509,7 @@ p{ margin:0; }
 /* ============ SKILLS ============ */
 .skills-grid{
   display:grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
   gap: 22px;
 }
 .skill-card{
@@ -549,7 +552,7 @@ p{ margin:0; }
 /* ============ PROJECTS ============ */
 .projects-grid{
   display:grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 24px;
 }
 .project-card{
@@ -668,7 +671,7 @@ p{ margin:0; }
   padding: 34px 0;
 }
 .footer .wrap{ display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px; row-gap: 14px; }
-.footer-links{ display:flex; gap:18px; }
+.footer-links{ display:flex; flex-wrap:wrap; gap:8px 18px; min-width:0; }
 .footer-links a{ color: var(--text-dim); font-size: 0.84rem; }
 .footer-links a:hover{ color: var(--cyan); }
 .footer small{ color: var(--text-dim); font-size: 0.8rem; }
@@ -713,6 +716,7 @@ p{ margin:0; }
     <nav class="nav-links" id="navLinks">
       <a href="#home" class="nav-link active">Home</a>
       <a href="#about" class="nav-link">About</a>
+      <a href="#experience" class="nav-link">Experience</a>
       <a href="#skills" class="nav-link">Skills</a>
       <a href="#projects" class="nav-link">Projects</a>
       <a href="#certifications" class="nav-link">Certifications</a>
@@ -786,9 +790,9 @@ p{ margin:0; }
     </div>
     <div class="about-grid">
       <div class="about-text reveal">
-        <p>I'm Mostafa Nader, a cybersecurity enthusiast building a career at the intersection of security operations and web application security. My focus is on the practical, day-to-day work of a SOC: watching telemetry, separating signal from noise, and understanding attacker behavior well enough to catch it early.</p>
-        <p>On the defensive side, I work with security monitoring and log analysis to detect suspicious activity, investigate alerts, and support structured incident response. On the offensive side, I study how web applications break — testing for common vulnerabilities and thinking like an attacker so that defenses can be built with real threats in mind.</p>
-        <p>I care about doing security work that is disciplined, well-documented, and grounded in fundamentals — network security, the TCP/IP stack, and the OWASP methodology — rather than chasing tools for their own sake.</p>
+        <p>I'm Mostafa Nader, a Cybersecurity student at the Faculty of Artificial Intelligence, Menoufia University, building hands-on experience at the intersection of SOC operations and web security. Through structured training programs and self-directed labs, I've focused on the practical, day-to-day work of a SOC: security monitoring, log analysis, threat detection, and incident investigation.</p>
+        <p>On the defensive side, I've trained across SOC workflows, SIEM tooling, and incident handling — covering Windows/Linux security, attack techniques, and the fundamentals of digital forensics. On the offensive side, I practice web and network security testing with tools like Burp Suite, Nmap, and Wireshark to understand how systems get compromised so they can be better defended.</p>
+        <p>I care about building a disciplined, well-documented foundation — networking fundamentals, the TCP/IP stack, and structured incident response — through continuous, hands-on learning rather than chasing tools for their own sake.</p>
 
         <div class="focus-list">
           <div class="focus-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V5l7-3z"/></svg> SOC Operations</div>
@@ -812,8 +816,78 @@ p{ margin:0; }
           <div class="out">&gt; Incident Response · Log Analysis</div>
           <div class="out">&gt; Network Security · Web App Security</div>
           <div>&nbsp;</div>
+          <div><span class="prompt">guest@soc-mn</span><span class="path">:~$</span> <span class="cmd">cat education.txt</span></div>
+          <div class="out">&gt; B.Sc. Artificial Intelligence, Cybersecurity</div>
+          <div class="out">&gt; Faculty of AI, Menoufia University</div>
+          <div class="out">&gt; GPA <span class="accent">3.12</span> · In Progress</div>
+          <div>&nbsp;</div>
           <div><span class="prompt">guest@soc-mn</span><span class="path">:~$</span> <span class="cmd">status --check</span></div>
           <div class="out">&gt; <span class="accent">All systems monitored.</span> <span class="terminal-cursor"></span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ EXPERIENCE ============ -->
+<section class="section" id="experience">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">Experience</div>
+      <h2>Hands-on training &amp; programs.</h2>
+      <p>Structured cybersecurity training across SOC operations, incident response, and networking fundamentals.</p>
+    </div>
+
+    <div class="cert-timeline reveal-stagger">
+      <div class="cert-item">
+        <div class="cert-card glass">
+          <div class="cert-main">
+            <h3>Cyber Security Incident Response Analyst Trainee</h3>
+            <div class="cert-org">DEPI · Online</div>
+            <p class="cert-desc">Trained in SOC operations, SIEM, incident detection, investigation, and response. Covered Windows/Linux security, attack techniques, and digital forensics.</p>
+          </div>
+          <div class="cert-side">
+            <span class="cert-date">2026</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="cert-item">
+        <div class="cert-card glass">
+          <div class="cert-main">
+            <h3>SOC Analyst Trainee</h3>
+            <div class="cert-org">NTI</div>
+            <p class="cert-desc">Studied security monitoring, alert analysis, and threat detection. Practiced SOC workflows and security event investigation.</p>
+          </div>
+          <div class="cert-side">
+            <span class="cert-date">NTI Program</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="cert-item">
+        <div class="cert-card glass">
+          <div class="cert-main">
+            <h3>Network Fundamentals Trainee</h3>
+            <div class="cert-org">NTI</div>
+            <p class="cert-desc">Studied TCP/IP, VLANs, routing, switching, DHCP, DNS, and OSPF. Practiced Cisco networking and troubleshooting.</p>
+          </div>
+          <div class="cert-side">
+            <span class="cert-date">NTI Program</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="cert-item">
+        <div class="cert-card glass">
+          <div class="cert-main">
+            <h3>Cyber Security Boot Camp</h3>
+            <div class="cert-org">ITI</div>
+            <p class="cert-desc">Covered cybersecurity fundamentals, Linux, network security, attack techniques, and incident response.</p>
+          </div>
+          <div class="cert-side">
+            <span class="cert-date">ITI Program</span>
+          </div>
         </div>
       </div>
     </div>
@@ -837,12 +911,12 @@ p{ margin:0; }
           <div><h3>SOC &amp; Blue Team</h3><div class="count">6 competencies</div></div>
         </div>
         <div class="skill-list">
-          <div class="skill-row" data-level="5"><div class="skill-row-top"><span class="name">SOC Operations</span><span class="skill-dots"><i></i><i></i><i></i><i></i><i></i></span></div><div class="skill-bar"><div class="skill-bar-fill"></div></div></div>
-          <div class="skill-row" data-level="5"><div class="skill-row-top"><span class="name">Threat Detection</span><span class="skill-dots"><i></i><i></i><i></i><i></i><i></i></span></div><div class="skill-bar"><div class="skill-bar-fill"></div></div></div>
-          <div class="skill-row" data-level="4"><div class="skill-row-top"><span class="name">Incident Analysis</span><span class="skill-dots"><i></i><i></i><i></i><i></i><i></i></span></div><div class="skill-bar"><div class="skill-bar-fill"></div></div></div>
-          <div class="skill-row" data-level="4"><div class="skill-row-top"><span class="name">Incident Response</span><span class="skill-dots"><i></i><i></i><i></i><i></i><i></i></span></div><div class="skill-bar"><div class="skill-bar-fill"></div></div></div>
-          <div class="skill-row" data-level="5"><div class="skill-row-top"><span class="name">Log Analysis</span><span class="skill-dots"><i></i><i></i><i></i><i></i><i></i></span></div><div class="skill-bar"><div class="skill-bar-fill"></div></div></div>
-          <div class="skill-row" data-level="5"><div class="skill-row-top"><span class="name">Security Monitoring</span><span class="skill-dots"><i></i><i></i><i></i><i></i><i></i></span></div><div class="skill-bar"><div class="skill-bar-fill"></div></div></div>
+          <div class="skill-row" data-level="4"><div class="skill-row-top"><span class="name">SOC Operations</span><span class="skill-dots"><i></i><i></i><i></i><i></i><i></i></span></div><div class="skill-bar"><div class="skill-bar-fill"></div></div></div>
+          <div class="skill-row" data-level="4"><div class="skill-row-top"><span class="name">Threat Detection</span><span class="skill-dots"><i></i><i></i><i></i><i></i><i></i></span></div><div class="skill-bar"><div class="skill-bar-fill"></div></div></div>
+          <div class="skill-row" data-level="3"><div class="skill-row-top"><span class="name">Incident Analysis</span><span class="skill-dots"><i></i><i></i><i></i><i></i><i></i></span></div><div class="skill-bar"><div class="skill-bar-fill"></div></div></div>
+          <div class="skill-row" data-level="3"><div class="skill-row-top"><span class="name">Incident Response</span><span class="skill-dots"><i></i><i></i><i></i><i></i><i></i></span></div><div class="skill-bar"><div class="skill-bar-fill"></div></div></div>
+          <div class="skill-row" data-level="4"><div class="skill-row-top"><span class="name">Log Analysis</span><span class="skill-dots"><i></i><i></i><i></i><i></i><i></i></span></div><div class="skill-bar"><div class="skill-bar-fill"></div></div></div>
+          <div class="skill-row" data-level="4"><div class="skill-row-top"><span class="name">Security Monitoring</span><span class="skill-dots"><i></i><i></i><i></i><i></i><i></i></span></div><div class="skill-bar"><div class="skill-bar-fill"></div></div></div>
         </div>
       </div>
 
@@ -850,14 +924,15 @@ p{ margin:0; }
       <div class="skill-card glass">
         <div class="skill-card-head">
           <div class="skill-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14.7 6.3a4 4 0 00-5.4 5.4L3 18v3h3l6.3-6.3a4 4 0 005.4-5.4l-2.1 2.1-2-2 2.1-2.1z"/></svg></div>
-          <div><h3>Security Tools</h3><div class="count">5 tools</div></div>
+          <div><h3>Security Tools</h3><div class="count">6 tools</div></div>
         </div>
         <div class="skill-list">
-          <div class="skill-row" data-level="5"><div class="skill-row-top"><span class="name">SIEM Platforms</span><span class="skill-dots"><i></i><i></i><i></i><i></i><i></i></span></div><div class="skill-bar"><div class="skill-bar-fill"></div></div></div>
           <div class="skill-row" data-level="4"><div class="skill-row-top"><span class="name">Splunk</span><span class="skill-dots"><i></i><i></i><i></i><i></i><i></i></span></div><div class="skill-bar"><div class="skill-bar-fill"></div></div></div>
-          <div class="skill-row" data-level="5"><div class="skill-row-top"><span class="name">Wireshark</span><span class="skill-dots"><i></i><i></i><i></i><i></i><i></i></span></div><div class="skill-bar"><div class="skill-bar-fill"></div></div></div>
+          <div class="skill-row" data-level="4"><div class="skill-row-top"><span class="name">Wireshark</span><span class="skill-dots"><i></i><i></i><i></i><i></i><i></i></span></div><div class="skill-bar"><div class="skill-bar-fill"></div></div></div>
           <div class="skill-row" data-level="4"><div class="skill-row-top"><span class="name">Nmap</span><span class="skill-dots"><i></i><i></i><i></i><i></i><i></i></span></div><div class="skill-bar"><div class="skill-bar-fill"></div></div></div>
           <div class="skill-row" data-level="4"><div class="skill-row-top"><span class="name">Burp Suite</span><span class="skill-dots"><i></i><i></i><i></i><i></i><i></i></span></div><div class="skill-bar"><div class="skill-bar-fill"></div></div></div>
+          <div class="skill-row" data-level="3"><div class="skill-row-top"><span class="name">FortiGate</span><span class="skill-dots"><i></i><i></i><i></i><i></i><i></i></span></div><div class="skill-bar"><div class="skill-bar-fill"></div></div></div>
+          <div class="skill-row" data-level="4"><div class="skill-row-top"><span class="name">Cisco Packet Tracer</span><span class="skill-dots"><i></i><i></i><i></i><i></i><i></i></span></div><div class="skill-bar"><div class="skill-bar-fill"></div></div></div>
         </div>
       </div>
 
@@ -868,11 +943,11 @@ p{ margin:0; }
           <div><h3>Network Security</h3><div class="count">5 competencies</div></div>
         </div>
         <div class="skill-list">
-          <div class="skill-row" data-level="5"><div class="skill-row-top"><span class="name">Network Security</span><span class="skill-dots"><i></i><i></i><i></i><i></i><i></i></span></div><div class="skill-bar"><div class="skill-bar-fill"></div></div></div>
+          <div class="skill-row" data-level="4"><div class="skill-row-top"><span class="name">Network Security</span><span class="skill-dots"><i></i><i></i><i></i><i></i><i></i></span></div><div class="skill-bar"><div class="skill-bar-fill"></div></div></div>
           <div class="skill-row" data-level="4"><div class="skill-row-top"><span class="name">TCP/IP</span><span class="skill-dots"><i></i><i></i><i></i><i></i><i></i></span></div><div class="skill-bar"><div class="skill-bar-fill"></div></div></div>
-          <div class="skill-row" data-level="4"><div class="skill-row-top"><span class="name">Firewalls</span><span class="skill-dots"><i></i><i></i><i></i><i></i><i></i></span></div><div class="skill-bar"><div class="skill-bar-fill"></div></div></div>
-          <div class="skill-row" data-level="4"><div class="skill-row-top"><span class="name">IDS / IPS</span><span class="skill-dots"><i></i><i></i><i></i><i></i><i></i></span></div><div class="skill-bar"><div class="skill-bar-fill"></div></div></div>
-          <div class="skill-row" data-level="4"><div class="skill-row-top"><span class="name">Traffic Analysis</span><span class="skill-dots"><i></i><i></i><i></i><i></i><i></i></span></div><div class="skill-bar"><div class="skill-bar-fill"></div></div></div>
+          <div class="skill-row" data-level="4"><div class="skill-row-top"><span class="name">VLANs &amp; Routing</span><span class="skill-dots"><i></i><i></i><i></i><i></i><i></i></span></div><div class="skill-bar"><div class="skill-bar-fill"></div></div></div>
+          <div class="skill-row" data-level="3"><div class="skill-row-top"><span class="name">DHCP / DNS / OSPF</span><span class="skill-dots"><i></i><i></i><i></i><i></i><i></i></span></div><div class="skill-bar"><div class="skill-bar-fill"></div></div></div>
+          <div class="skill-row" data-level="3"><div class="skill-row-top"><span class="name">Traffic Analysis</span><span class="skill-dots"><i></i><i></i><i></i><i></i><i></i></span></div><div class="skill-bar"><div class="skill-bar-fill"></div></div></div>
         </div>
       </div>
 
@@ -883,10 +958,25 @@ p{ margin:0; }
           <div><h3>Web Security</h3><div class="count">4 competencies</div></div>
         </div>
         <div class="skill-list">
-          <div class="skill-row" data-level="4"><div class="skill-row-top"><span class="name">Web App Security</span><span class="skill-dots"><i></i><i></i><i></i><i></i><i></i></span></div><div class="skill-bar"><div class="skill-bar-fill"></div></div></div>
-          <div class="skill-row" data-level="4"><div class="skill-row-top"><span class="name">Web Penetration Testing</span><span class="skill-dots"><i></i><i></i><i></i><i></i><i></i></span></div><div class="skill-bar"><div class="skill-bar-fill"></div></div></div>
-          <div class="skill-row" data-level="5"><div class="skill-row-top"><span class="name">OWASP Concepts</span><span class="skill-dots"><i></i><i></i><i></i><i></i><i></i></span></div><div class="skill-bar"><div class="skill-bar-fill"></div></div></div>
-          <div class="skill-row" data-level="4"><div class="skill-row-top"><span class="name">Vulnerability Assessment</span><span class="skill-dots"><i></i><i></i><i></i><i></i><i></i></span></div><div class="skill-bar"><div class="skill-bar-fill"></div></div></div>
+          <div class="skill-row" data-level="3"><div class="skill-row-top"><span class="name">Web App Security</span><span class="skill-dots"><i></i><i></i><i></i><i></i><i></i></span></div><div class="skill-bar"><div class="skill-bar-fill"></div></div></div>
+          <div class="skill-row" data-level="3"><div class="skill-row-top"><span class="name">Web Penetration Testing</span><span class="skill-dots"><i></i><i></i><i></i><i></i><i></i></span></div><div class="skill-bar"><div class="skill-bar-fill"></div></div></div>
+          <div class="skill-row" data-level="3"><div class="skill-row-top"><span class="name">OWASP Concepts</span><span class="skill-dots"><i></i><i></i><i></i><i></i><i></i></span></div><div class="skill-bar"><div class="skill-bar-fill"></div></div></div>
+          <div class="skill-row" data-level="3"><div class="skill-row-top"><span class="name">Vulnerability Assessment</span><span class="skill-dots"><i></i><i></i><i></i><i></i><i></i></span></div><div class="skill-bar"><div class="skill-bar-fill"></div></div></div>
+        </div>
+      </div>
+
+      <!-- Programming & Systems -->
+      <div class="skill-card glass">
+        <div class="skill-card-head">
+          <div class="skill-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 9l-4 3 4 3M16 9l4 3-4 3M13 6l-2 12"/></svg></div>
+          <div><h3>Programming &amp; Systems</h3><div class="count">5 competencies</div></div>
+        </div>
+        <div class="skill-list">
+          <div class="skill-row" data-level="4"><div class="skill-row-top"><span class="name">Python</span><span class="skill-dots"><i></i><i></i><i></i><i></i><i></i></span></div><div class="skill-bar"><div class="skill-bar-fill"></div></div></div>
+          <div class="skill-row" data-level="3"><div class="skill-row-top"><span class="name">Bash</span><span class="skill-dots"><i></i><i></i><i></i><i></i><i></i></span></div><div class="skill-bar"><div class="skill-bar-fill"></div></div></div>
+          <div class="skill-row" data-level="3"><div class="skill-row-top"><span class="name">C++ / Kotlin</span><span class="skill-dots"><i></i><i></i><i></i><i></i><i></i></span></div><div class="skill-bar"><div class="skill-bar-fill"></div></div></div>
+          <div class="skill-row" data-level="4"><div class="skill-row-top"><span class="name">Linux</span><span class="skill-dots"><i></i><i></i><i></i><i></i><i></i></span></div><div class="skill-bar"><div class="skill-bar-fill"></div></div></div>
+          <div class="skill-row" data-level="3"><div class="skill-row-top"><span class="name">Windows Server</span><span class="skill-dots"><i></i><i></i><i></i><i></i><i></i></span></div><div class="skill-bar"><div class="skill-bar-fill"></div></div></div>
         </div>
       </div>
     </div>
@@ -899,7 +989,7 @@ p{ margin:0; }
     <div class="section-head reveal">
       <div class="eyebrow">Projects</div>
       <h2>Selected hands-on work.</h2>
-      <p>Sample projects illustrating SOC, network, and web security work. Replace with your own case studies and repository links.</p>
+      <p>Practical labs and coursework spanning SOC operations, network engineering, and web security testing.</p>
     </div>
 
     <div class="projects-grid reveal-stagger">
@@ -909,65 +999,45 @@ p{ margin:0; }
           <span class="project-cat">SOC / Blue Team</span>
           <span class="project-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg></span>
         </div>
-        <h3>SOC Threat Detection Lab</h3>
-        <p>A home-lab SOC environment for generating, ingesting, and triaging security events — building detection rules and dashboards for common attack patterns.</p>
+        <h3>SOC &amp; Incident Response Labs</h3>
+        <p>Hands-on SOC labs practicing security monitoring, log analysis, threat detection, and incident investigation through the TryHackMe SOC Level 1 path.</p>
         <div class="project-tools">
-          <span class="tag">Splunk</span><span class="tag">Sysmon</span><span class="tag">Elastic Stack</span><span class="tag">Wireshark</span>
+          <span class="tag">TryHackMe</span><span class="tag">SIEM</span><span class="tag">Log Analysis</span>
         </div>
         <div class="project-actions">
           <a href="#" class="btn btn-primary btn-sm">View Project</a>
-          <a href="#" class="btn btn-ghost btn-sm">GitHub</a>
         </div>
       </article>
 
       <!-- Project 2 -->
       <article class="project-card glass">
         <div class="project-top">
-          <span class="project-cat">Web Security</span>
-          <span class="project-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></span>
+          <span class="project-cat">Network Security</span>
+          <span class="project-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="5" cy="6" r="2"/><circle cx="19" cy="6" r="2"/><circle cx="12" cy="18" r="2"/><path d="M5 8v3a2 2 0 002 2h3M19 8v3a2 2 0 01-2 2h-3M12 13v3"/></svg></span>
         </div>
-        <h3>Web App Penetration Test — Sandbox E-Commerce Site</h3>
-        <p>A manual penetration test against an intentionally vulnerable e-commerce sandbox, mapping findings to the OWASP Top 10 with remediation guidance.</p>
+        <h3>Enterprise Network Lab</h3>
+        <p>Designed and configured enterprise network topologies — including VLANs, routing, DHCP, and DNS — with a focus on structured troubleshooting.</p>
         <div class="project-tools">
-          <span class="tag">Burp Suite</span><span class="tag">OWASP ZAP</span><span class="tag">SQLmap</span><span class="tag">OWASP Top 10</span>
+          <span class="tag">Cisco Packet Tracer</span><span class="tag">VLANs</span><span class="tag">Routing</span>
         </div>
         <div class="project-actions">
           <a href="#" class="btn btn-primary btn-sm">View Project</a>
-          <a href="#" class="btn btn-ghost btn-sm">GitHub</a>
         </div>
       </article>
 
       <!-- Project 3 -->
       <article class="project-card glass">
         <div class="project-top">
-          <span class="project-cat">Network Security</span>
-          <span class="project-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="5" cy="6" r="2"/><circle cx="19" cy="6" r="2"/><circle cx="12" cy="18" r="2"/><path d="M5 8v3a2 2 0 002 2h3M19 8v3a2 2 0 01-2 2h-3M12 13v3"/></svg></span>
+          <span class="project-cat">Web Security</span>
+          <span class="project-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></span>
         </div>
-        <h3>Network Intrusion Detection with Snort</h3>
-        <p>Configured and tuned IDS rules to detect port scans, brute-force attempts, and suspicious lateral movement across a simulated internal network.</p>
+        <h3>Web Security Labs</h3>
+        <p>Practiced network reconnaissance, HTTP traffic analysis, vulnerability assessment, and web security testing across a series of guided labs.</p>
         <div class="project-tools">
-          <span class="tag">Snort</span><span class="tag">Wireshark</span><span class="tag">Nmap</span><span class="tag">pfSense</span>
+          <span class="tag">Burp Suite</span><span class="tag">Nmap</span><span class="tag">Wireshark</span>
         </div>
         <div class="project-actions">
           <a href="#" class="btn btn-primary btn-sm">View Project</a>
-          <a href="#" class="btn btn-ghost btn-sm">GitHub</a>
-        </div>
-      </article>
-
-      <!-- Project 4 -->
-      <article class="project-card glass">
-        <div class="project-top">
-          <span class="project-cat">Incident Response</span>
-          <span class="project-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M13 2L4 14h6l-1 8 9-12h-6l1-8z"/></svg></span>
-        </div>
-        <h3>Phishing &amp; Log Analysis Playbook</h3>
-        <p>An incident-response playbook and log analysis workflow for triaging phishing reports, from initial alert through containment and lessons learned.</p>
-        <div class="project-tools">
-          <span class="tag">Splunk</span><span class="tag">MITRE ATT&amp;CK</span><span class="tag">TheHive</span>
-        </div>
-        <div class="project-actions">
-          <a href="#" class="btn btn-primary btn-sm">View Project</a>
-          <a href="#" class="btn btn-ghost btn-sm">GitHub</a>
         </div>
       </article>
     </div>
@@ -980,19 +1050,18 @@ p{ margin:0; }
     <div class="section-head reveal">
       <div class="eyebrow">Certifications</div>
       <h2>Training &amp; verified credentials.</h2>
-      <p>Sample entries — replace with your verified certifications and credential links.</p>
+      <p>Certifications and competition achievements earned alongside coursework and lab training.</p>
     </div>
 
     <div class="cert-timeline reveal-stagger">
       <div class="cert-item">
         <div class="cert-card glass">
           <div class="cert-main">
-            <h3>CompTIA Security+</h3>
-            <div class="cert-org">CompTIA</div>
-            <p class="cert-desc">Foundational certification covering core security concepts, risk management, network security, and incident response.</p>
+            <h3>eCIR — Certified Incident Responder</h3>
+            <div class="cert-org">eLearnSecurity (INE)</div>
+            <p class="cert-desc">Scenario-based credential validating incident handling and response skills — identifying, managing, and mitigating security incidents through hands-on exercises.</p>
           </div>
           <div class="cert-side">
-            <span class="cert-date">2024</span>
             <a href="#" class="btn btn-ghost btn-sm">Verify Credential</a>
           </div>
         </div>
@@ -1001,26 +1070,11 @@ p{ margin:0; }
       <div class="cert-item">
         <div class="cert-card glass">
           <div class="cert-main">
-            <h3>eLearnSecurity Junior Penetration Tester (eJPT)</h3>
-            <div class="cert-org">INE / eLearnSecurity</div>
-            <p class="cert-desc">Hands-on, practical assessment covering network and web penetration testing fundamentals in a live lab environment.</p>
+            <h3>Cisco NetRiders</h3>
+            <div class="cert-org">Cisco · Networking Competition</div>
+            <p class="cert-desc">Competitive networking event testing practical skills in routing, switching, and network troubleshooting against Cisco's certification curriculum.</p>
           </div>
           <div class="cert-side">
-            <span class="cert-date">2024</span>
-            <a href="#" class="btn btn-ghost btn-sm">Verify Credential</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="cert-item">
-        <div class="cert-card glass">
-          <div class="cert-main">
-            <h3>Google Cybersecurity Professional Certificate</h3>
-            <div class="cert-org">Google (via Coursera)</div>
-            <p class="cert-desc">Comprehensive program covering SOC fundamentals, SIEM tools, network defense, and Python for security automation.</p>
-          </div>
-          <div class="cert-side">
-            <span class="cert-date">2023</span>
             <a href="#" class="btn btn-ghost btn-sm">Verify Credential</a>
           </div>
         </div>
@@ -1031,10 +1085,10 @@ p{ margin:0; }
           <div class="cert-main">
             <h3>SOC Level 1 Learning Path</h3>
             <div class="cert-org">TryHackMe</div>
-            <p class="cert-desc">Practical training path covering log analysis, threat intelligence, phishing analysis, and SIEM-based investigations.</p>
+            <p class="cert-desc">Practical training path covering security monitoring, log analysis, threat detection, and incident investigation through hands-on SOC labs.</p>
           </div>
           <div class="cert-side">
-            <span class="cert-date">2024</span>
+            <span class="cert-date">2026</span>
             <a href="#" class="btn btn-ghost btn-sm">Verify Credential</a>
           </div>
         </div>
@@ -1058,18 +1112,18 @@ p{ margin:0; }
           <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></span>
           <span class="txt"><div class="k">Email</div><div class="v">mos014d@gmail.com</div></span>
         </a>
-        <a href="https://www.linkedin.com/in/esasa11/" target="_blank" rel="noopener noreferrer" class="contact-link glass">
+        <a href="https://linkedin.com/in/esasa11" target="_blank" rel="noopener noreferrer" class="contact-link glass">
           <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 11v5M8 8v.01M12 16v-3a2 2 0 014 0v3M12 13V16"/></svg></span>
-          <span class="txt"><div class="k">LinkedIn</div><div class="v">linkedin.com/in/mostafanader</div></span>
+          <span class="txt"><div class="k">LinkedIn</div><div class="v">linkedin.com/in/esasa11</div></span>
         </a>
-        <a href="https://github.com/mostafanader" target="_blank" rel="noopener noreferrer" class="contact-link glass">
-          <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.4c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 00-1.3-3.2 4.2 4.2 0 00-.1-3.2s-1-.3-3.4 1.2a11.6 11.6 0 00-6 0C7.9 3.9 6.9 4.2 6.9 4.2a4.2 4.2 0 00-.1 3.2A4.6 4.6 0 005.5 10.6c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V22"/></svg></span>
-          <span class="txt"><div class="k">GitHub</div><div class="v">github.com/mostafanader</div></span>
+        <a href="tel:+201220471660" class="contact-link glass">
+          <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6 19.8 19.8 0 01-3.1-8.7A2 2 0 014.1 2h3a2 2 0 012 1.7c.1 1 .3 2 .6 2.9a2 2 0 01-.5 2.1L8 9.9a16 16 0 006 6l1.2-1.2a2 2 0 012.1-.5c.9.3 1.9.5 2.9.6a2 2 0 011.8 2.1z"/></svg></span>
+          <span class="txt"><div class="k">Phone</div><div class="v">+20 122 047 1660</div></span>
         </a>
 
         <div class="contact-link glass" style="cursor:default;">
           <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2L20 5.5V11C20 16 16.9 19.8 12 21C7.1 19.8 4 16 4 11V5.5L12 2Z"/></svg></span>
-          <span class="txt"><div class="k">Response Time</div><div class="v">Typically within 24–48 hours</div></span>
+          <span class="txt"><div class="k">Location</div><div class="v">Menoufia, Egypt</div></span>
         </div>
       </div>
 
@@ -1103,6 +1157,7 @@ p{ margin:0; }
     <small>© <span id="year"></span> Mostafa Nader. All rights reserved.</small>
     <div class="footer-links">
       <a href="#about">About</a>
+      <a href="#experience">Experience</a>
       <a href="#skills">Skills</a>
       <a href="#projects">Projects</a>
       <a href="#certifications">Certifications</a>
@@ -1385,7 +1440,7 @@ p{ margin:0; }
       var subject = document.getElementById('cf-subject').value.trim() || 'Portfolio Contact';
       var message = document.getElementById('cf-message').value.trim();
       var body = 'Name: ' + name + '\nEmail: ' + email + '\n\n' + message;
-      var mailto = 'mailto:mostafa.nader@example.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+      var mailto = 'mailto:mos014d@gmail.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
       window.location.href = mailto;
     });
   }
