@@ -596,6 +596,40 @@ p{ margin:0; }
   display:flex; gap:10px;
 }
 
+/* ---- featured project: DOM XSS lab (subtle persistent glow) ---- */
+.project-card--featured{
+  border-color: rgba(34,211,238,0.22);
+  box-shadow: 0 0 0 1px rgba(34,211,238,0.06), 0 20px 50px -30px rgba(34,211,238,0.35);
+}
+.project-card--featured:hover{
+  border-color: var(--border-glow);
+  box-shadow: 0 0 0 1px rgba(34,211,238,0.12), 0 26px 56px -24px rgba(34,211,238,0.45);
+}
+.project-badge{
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  margin: 14px 24px 0;
+  width: fit-content;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--green);
+}
+.project-badge-dot{
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--green);
+  box-shadow: 0 0 6px 1px rgba(52,211,153,0.85);
+  animation: pl-pulse-dot 1.6s ease-in-out infinite;
+  flex-shrink: 0;
+}
+@media (prefers-reduced-motion: reduce){
+  .project-badge-dot{ animation: none; }
+}
+.btn-demo svg{ width: 15px; height: 15px; flex-shrink: 0; }
+
 /* ============ CERTS ============ */
 .cert-timeline{ position:relative; padding-left: 30px; }
 .cert-timeline::before{
@@ -700,9 +734,464 @@ p{ margin:0; }
   .hero-actions .btn{ width:100%; }
   .siem-grid{ grid-template-columns: 1fr 1fr; }
 }
+
+/* ================================================================
+   PRELOADER — SOC / Blue Team secure-boot sequence
+   ================================================================ */
+html.pl-lock, html.pl-lock body{ overflow: hidden; height: 100%; }
+
+#preloader{
+  position: fixed;
+  inset: 0;
+  z-index: 100000;
+  background: radial-gradient(120% 120% at 50% 0%, #0b1420 0%, #070b12 55%, #050810 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  font-family: var(--font-mono);
+  transition: opacity .6s cubic-bezier(.4,0,.2,1), visibility .6s;
+}
+#preloader.pl-hidden{
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* ---- background grid ---- */
+.pl-grid{
+  position: absolute;
+  inset: -2px;
+  background-image:
+    linear-gradient(rgba(34,211,238,0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(34,211,238,0.07) 1px, transparent 1px);
+  background-size: 42px 42px;
+  mask-image: radial-gradient(80% 70% at 50% 40%, #000 0%, transparent 78%);
+  -webkit-mask-image: radial-gradient(80% 70% at 50% 40%, #000 0%, transparent 78%);
+  animation: pl-grid-drift 18s linear infinite;
+  opacity: .8;
+}
+@keyframes pl-grid-drift{
+  0%{ background-position: 0 0, 0 0; }
+  100%{ background-position: 42px 84px, 42px 84px; }
+}
+
+/* ---- radial vignette glow ---- */
+.pl-glow{
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(45% 40% at 50% 42%, rgba(34,211,238,0.10), transparent 70%);
+  pointer-events: none;
+}
+
+/* ---- horizontal scan line sweep ---- */
+.pl-scan{
+  position: absolute;
+  left: 0; right: 0;
+  height: 120px;
+  background: linear-gradient(to bottom, transparent, rgba(34,211,238,0.09), transparent);
+  animation: pl-scan-move 3.2s ease-in-out infinite;
+  pointer-events: none;
+}
+@keyframes pl-scan-move{
+  0%{ top: -120px; opacity: 0; }
+  10%{ opacity: 1; }
+  90%{ opacity: 1; }
+  100%{ top: 100%; opacity: 0; }
+}
+
+/* ---- particles ---- */
+.pl-particles{ position:absolute; inset:0; pointer-events:none; }
+.pl-particle{
+  position: absolute;
+  width: 3px; height: 3px;
+  border-radius: 50%;
+  background: var(--cyan);
+  box-shadow: 0 0 6px 1px rgba(34,211,238,0.8);
+  opacity: 0;
+  animation: pl-particle-float linear infinite;
+}
+@keyframes pl-particle-float{
+  0%{ transform: translateY(20px) scale(0.6); opacity: 0; }
+  15%{ opacity: .9; }
+  85%{ opacity: .6; }
+  100%{ transform: translateY(-620px) scale(1); opacity: 0; }
+}
+
+/* ---- corner HUD brackets ---- */
+.pl-hud-corner{
+  position: absolute;
+  width: 34px; height: 34px;
+  border: 1.5px solid rgba(34,211,238,0.45);
+  opacity: .8;
+}
+.pl-hud-corner.tl{ top: 26px; left: 26px; border-right:0; border-bottom:0; }
+.pl-hud-corner.tr{ top: 26px; right: 26px; border-left:0; border-bottom:0; }
+.pl-hud-corner.bl{ bottom: 26px; left: 26px; border-right:0; border-top:0; }
+.pl-hud-corner.br{ bottom: 26px; right: 26px; border-left:0; border-top:0; }
+
+.pl-hud-label{
+  position: absolute;
+  font-size: 10.5px;
+  letter-spacing: .14em;
+  color: var(--text-dim);
+  text-transform: uppercase;
+}
+.pl-hud-label.top-left{ top: 40px; left: 44px; }
+.pl-hud-label.top-right{ top: 40px; right: 44px; text-align: right; }
+.pl-hud-label.bottom-left{ bottom: 40px; left: 44px; }
+.pl-hud-label.bottom-right{ bottom: 40px; right: 44px; text-align: right; }
+.pl-hud-label .dot{
+  display: inline-block;
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--green);
+  box-shadow: 0 0 6px 1px rgba(52,211,153,0.9);
+  margin-right: 6px;
+  animation: pl-pulse-dot 1.4s ease-in-out infinite;
+}
+@keyframes pl-pulse-dot{
+  0%,100%{ opacity: 1; }
+  50%{ opacity: .35; }
+}
+
+/* ---- console panel ---- */
+.pl-panel{
+  position: relative;
+  z-index: 2;
+  width: min(560px, 88vw);
+  padding: 40px 38px 34px;
+  border-radius: 16px;
+  background: rgba(10,16,25,0.55);
+  border: 1px solid rgba(148,178,204,0.16);
+  box-shadow: 0 0 0 1px rgba(34,211,238,0.05), 0 30px 80px -20px rgba(0,0,0,0.7), 0 0 60px -10px rgba(34,211,238,0.08);
+  backdrop-filter: blur(6px);
+}
+
+.pl-titlebar{
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 22px;
+  opacity: .75;
+}
+.pl-titlebar span{
+  width: 9px; height: 9px;
+  border-radius: 50%;
+  background: rgba(148,178,204,0.3);
+}
+.pl-titlebar .pl-session{
+  margin-left: auto;
+  font-size: 10.5px;
+  letter-spacing: .1em;
+  color: var(--text-dim);
+  text-transform: uppercase;
+}
+
+.pl-line{
+  font-size: 14.5px;
+  line-height: 1.9;
+  color: var(--text-mute);
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+.pl-prompt{ color: var(--green); }
+.pl-cmd{ color: var(--text); }
+
+.pl-name-line{
+  margin-top: 6px;
+  font-family: var(--font-display);
+  font-size: clamp(26px, 5vw, 36px);
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -0.01em;
+  min-height: 1.3em;
+}
+.pl-name-line .pl-typecursor{
+  display: inline-block;
+  width: 2px;
+  height: .9em;
+  background: var(--cyan);
+  margin-left: 3px;
+  vertical-align: -0.12em;
+  animation: pl-blink 1s step-end infinite;
+}
+@keyframes pl-blink{
+  0%,49%{ opacity: 1; }
+  50%,100%{ opacity: 0; }
+}
+
+.pl-welcome{
+  margin-top: 4px;
+  font-family: var(--font-body);
+  font-size: 13.5px;
+  color: var(--text-dim);
+  letter-spacing: .02em;
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity .5s ease, transform .5s ease;
+}
+.pl-welcome.pl-show{ opacity: 1; transform: translateY(0); }
+
+.pl-status-row{
+  margin-top: 26px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 20px;
+  font-size: 13px;
+  color: var(--cyan);
+}
+.pl-status-row .pl-caret{ color: var(--text-dim); }
+#plStatusText{
+  color: var(--text-mute);
+}
+#plStatusText .ok{ color: var(--green); }
+
+.pl-bar-wrap{
+  margin-top: 16px;
+}
+.pl-bar-track{
+  position: relative;
+  height: 5px;
+  border-radius: 3px;
+  background: rgba(148,178,204,0.12);
+  overflow: hidden;
+}
+.pl-bar-fill{
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 0%;
+  border-radius: 3px;
+  background: linear-gradient(90deg, var(--cyan-dim), var(--cyan));
+  box-shadow: 0 0 10px 1px rgba(34,211,238,0.6);
+  transition: width .25s linear;
+}
+.pl-bar-meta{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 9px;
+  font-size: 11px;
+  letter-spacing: .08em;
+  color: var(--text-dim);
+  text-transform: uppercase;
+}
+#plPercent{
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text);
+  font-variant-numeric: tabular-nums;
+}
+
+@media (max-width: 480px){
+  .pl-panel{ padding: 28px 20px 24px; }
+  .pl-hud-label{ font-size: 8.5px; }
+  .pl-hud-label.top-left, .pl-hud-label.top-right{ top: 18px; }
+  .pl-hud-label.bottom-left, .pl-hud-label.bottom-right{ bottom: 18px; }
+  .pl-hud-corner.tl, .pl-hud-corner.tr{ top: 12px; }
+  .pl-hud-corner.bl, .pl-hud-corner.br{ bottom: 12px; }
+  .pl-titlebar .pl-session{ display: none; }
+  .pl-name-line{ font-size: clamp(22px, 7vw, 30px); }
+}
+
+@media (max-width: 360px){
+  .pl-hud-label.top-right, .pl-hud-label.bottom-right{ display: none; }
+}
+
+@media (prefers-reduced-motion: reduce){
+  .pl-grid, .pl-scan, .pl-particle, .pl-hud-label .dot, .pl-typecursor{ animation: none !important; }
+  #preloader{ transition: opacity .01ms; }
+}
 </style>
 </head>
 <body>
+
+<!-- ============ PRELOADER ============ -->
+<div id="preloader" role="status" aria-live="polite" aria-label="Site loading">
+  <div class="pl-grid" aria-hidden="true"></div>
+  <div class="pl-glow" aria-hidden="true"></div>
+  <div class="pl-scan" aria-hidden="true"></div>
+  <div class="pl-particles" id="plParticles" aria-hidden="true"></div>
+
+  <div class="pl-hud-corner tl" aria-hidden="true"></div>
+  <div class="pl-hud-corner tr" aria-hidden="true"></div>
+  <div class="pl-hud-corner bl" aria-hidden="true"></div>
+  <div class="pl-hud-corner br" aria-hidden="true"></div>
+
+  <div class="pl-hud-label top-left" aria-hidden="true"><span class="dot"></span>SECURE SESSION</div>
+  <div class="pl-hud-label top-right" aria-hidden="true">SOC-NODE // BLUE-TEAM</div>
+  <div class="pl-hud-label bottom-left" aria-hidden="true">ENV: PRODUCTION</div>
+  <div class="pl-hud-label bottom-right" aria-hidden="true">PROTOCOL: TLS 1.3</div>
+
+  <div class="pl-panel">
+    <div class="pl-titlebar" aria-hidden="true">
+      <span></span><span></span><span></span>
+      <span class="pl-session">session::0x4E21</span>
+    </div>
+
+    <div class="pl-line"><span class="pl-prompt">$</span> <span class="pl-cmd" id="plWhoami"></span></div>
+    <div class="pl-name-line" id="plName"><span class="pl-typecursor" id="plCursor"></span></div>
+    <div class="pl-welcome" id="plWelcome">Cybersecurity Enthusiast · SOC Analyst · Blue Team</div>
+
+    <div class="pl-status-row">
+      <span class="pl-caret">&gt;</span>
+      <span id="plStatusText">Initializing secure environment...</span>
+    </div>
+
+    <div class="pl-bar-wrap">
+      <div class="pl-bar-track">
+        <div class="pl-bar-fill" id="plBarFill"></div>
+      </div>
+      <div class="pl-bar-meta">
+        <span>Loading portfolio</span>
+        <span id="plPercent">00%</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<noscript><style>#preloader{ display:none !important; } html{ overflow:auto !important; }</style></noscript>
+
+<script>
+(function(){
+  "use strict";
+  var docEl = document.documentElement;
+  docEl.classList.add('pl-lock');
+
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var pre = document.getElementById('preloader');
+  if(!pre){ docEl.classList.remove('pl-lock'); return; }
+
+  /* Absolute safety net: never let the preloader block the page for more
+     than a few seconds, even if something below throws. */
+  var hardStop = setTimeout(finish, reduceMotion ? 2500 : 6500);
+
+  /* ---------- ambient particles ---------- */
+  (function spawnParticles(){
+    var wrap = document.getElementById('plParticles');
+    if(!wrap || reduceMotion) return;
+    var count = window.innerWidth < 560 ? 10 : 20;
+    for(var i=0;i<count;i++){
+      var p = document.createElement('span');
+      p.className = 'pl-particle';
+      var left = Math.random()*100;
+      var dur = 4 + Math.random()*5;
+      var delay = Math.random()*4;
+      p.style.left = left + '%';
+      p.style.bottom = '0';
+      p.style.animationDuration = dur + 's';
+      p.style.animationDelay = delay + 's';
+      wrap.appendChild(p);
+    }
+  })();
+
+  var whoamiEl = document.getElementById('plWhoami');
+  var nameEl = document.getElementById('plName');
+  var cursor = document.getElementById('plCursor');
+  var welcomeEl = document.getElementById('plWelcome');
+  var statusEl = document.getElementById('plStatusText');
+  var barFill = document.getElementById('plBarFill');
+  var percentEl = document.getElementById('plPercent');
+
+  var NAME = 'Mostafa Nader';
+  var WHOAMI = 'whoami';
+
+  var STEPS = [
+    { at: 0,  text: 'Initializing secure environment...' },
+    { at: 20, text: 'Establishing secure connection...' },
+    { at: 42, text: 'Loading security modules...' },
+    { at: 68, text: 'Loading portfolio data...' },
+    { at: 92, text: '<span class="ok">System ready ✓</span>' }
+  ];
+
+  function setStatusForPercent(p){
+    var msg = STEPS[0].text;
+    for(var i=0;i<STEPS.length;i++){ if(p >= STEPS[i].at) msg = STEPS[i].text; }
+    if(statusEl.innerHTML !== msg) statusEl.innerHTML = msg;
+  }
+
+  function typeInto(el, text, speed, cb){
+    if(reduceMotion){ el.textContent = text; if(cb) cb(); return; }
+    var i = 0;
+    (function step(){
+      if(i <= text.length){
+        el.textContent = text.slice(0, i);
+        i++;
+        setTimeout(step, speed);
+      } else if(cb){ cb(); }
+    })();
+  }
+
+  function typeNameInto(el, cursorNode, text, speed, cb){
+    if(reduceMotion){ el.insertBefore(document.createTextNode(text), cursorNode); if(cb) cb(); return; }
+    var i = 0;
+    (function step(){
+      if(i < text.length){
+        el.insertBefore(document.createTextNode(text[i]), cursorNode);
+        i++;
+        setTimeout(step, speed);
+      } else if(cb){ cb(); }
+    })();
+  }
+
+  function animateProgress(duration, cb){
+    var start = null;
+    function frame(ts){
+      if(start === null) start = ts;
+      var elapsed = ts - start;
+      var pct = Math.min(100, Math.round((elapsed/duration)*100));
+      barFill.style.width = pct + '%';
+      percentEl.textContent = (pct < 10 ? '0' : '') + pct + '%';
+      setStatusForPercent(pct);
+      if(pct < 100){
+        requestAnimationFrame(frame);
+      } else if(cb){ cb(); }
+    }
+    requestAnimationFrame(frame);
+  }
+
+  var finished = false;
+  function finish(){
+    if(finished) return;
+    finished = true;
+    clearTimeout(hardStop);
+    pre.classList.add('pl-hidden');
+    setTimeout(function(){
+      docEl.classList.remove('pl-lock');
+      if(pre && pre.parentNode) pre.parentNode.removeChild(pre);
+    }, reduceMotion ? 20 : 620);
+  }
+
+  function runSequence(){
+    if(reduceMotion){
+      whoamiEl.textContent = WHOAMI;
+      nameEl.insertBefore(document.createTextNode(NAME), cursor);
+      welcomeEl.classList.add('pl-show');
+      setStatusForPercent(0);
+      animateProgress(500, function(){ setTimeout(finish, 250); });
+      return;
+    }
+    typeInto(whoamiEl, WHOAMI, 55, function(){
+      setTimeout(function(){
+        typeNameInto(nameEl, cursor, NAME, 42, function(){
+          setTimeout(function(){
+            welcomeEl.classList.add('pl-show');
+            animateProgress(1650, function(){
+              setTimeout(finish, 420);
+            });
+          }, 200);
+        });
+      }, 180);
+    });
+  }
+
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', runSequence);
+  } else {
+    runSequence();
+  }
+})();
+</script>
 
 <!-- ============ NAV ============ -->
 <header class="nav" id="siteNav">
@@ -1026,18 +1515,29 @@ p{ margin:0; }
       </article>
 
       <!-- Project 3 -->
-      <article class="project-card glass">
+      <article class="project-card glass project-card--featured">
         <div class="project-top">
           <span class="project-cat">Web Security</span>
-          <span class="project-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></span>
+          <span class="project-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 9V7a3 3 0 116 0v2M6 12h12M6 12a6 6 0 0012 0M6 12l-2.5-1.5M18 12l2.5-1.5M6 12l-2.5 1.5M18 12l2.5 1.5M12 15v5"/></svg></span>
         </div>
-        <h3>Web Security Labs</h3>
-        <p>Practiced network reconnaissance, HTTP traffic analysis, vulnerability assessment, and web security testing across a series of guided labs.</p>
+        <div class="project-badge"><span class="project-badge-dot"></span>Video Walkthrough Available</div>
+        <h3>DOM-Based XSS Security Lab</h3>
+        <p>Identified and exploited a DOM-based Cross-Site Scripting (XSS) vulnerability in a controlled web security lab environment. Analyzed client-side JavaScript behavior, traced user-controlled input to a dangerous DOM sink, and demonstrated how malicious input could be executed in the browser.</p>
         <div class="project-tools">
-          <span class="tag">Burp Suite</span><span class="tag">Nmap</span><span class="tag">Wireshark</span>
+          <span class="tag">Web Security</span><span class="tag">DOM XSS</span><span class="tag">JavaScript</span><span class="tag">Burp Suite</span><span class="tag">Vulnerability Assessment</span>
         </div>
         <div class="project-actions">
-          <a href="#" class="btn btn-primary btn-sm">View Project</a>
+          <!--
+            REPLACE-ME: swap the href below for your own video link
+            (Google Drive share URL, YouTube, Loom, etc.) whenever you're ready.
+          -->
+          <a href="https://drive.google.com/file/d/1tocN9g6FKHmNfTKJr8v7wYZIINgtIKpX/view?usp=drive_link"
+             target="_blank" rel="noopener noreferrer"
+             class="btn btn-primary btn-sm btn-demo"
+             aria-label="Watch the DOM-based XSS exploitation demo video (opens in a new tab)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="6 3 20 12 6 21 6 3"/></svg>
+            View Exploitation Demo
+          </a>
         </div>
       </article>
     </div>
