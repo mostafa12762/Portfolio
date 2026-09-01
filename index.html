@@ -589,6 +589,62 @@ p{ margin:0; }
 .project-card h3{ font-size: 1.14rem; padding: 16px 24px 0; font-weight:600; }
 .project-card p{ padding: 10px 24px 0; color: var(--text-mute); font-size: 0.92rem; }
 .project-tools{ display:flex; flex-wrap:wrap; gap:8px; padding: 16px 24px 0; }
+.project-gallery{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap:10px;
+  padding: 16px 24px 0;
+}
+.project-gallery-link{
+  position:relative;
+  display:block;
+  cursor:pointer;
+  border-radius: var(--radius-sm, 10px);
+  overflow:hidden;
+  border: 1px solid var(--border);
+  transition: border-color .3s ease, box-shadow .3s ease;
+}
+.project-gallery-link img{
+  width:100%;
+  aspect-ratio: 4/3;
+  object-fit: cover;
+  display:block;
+  transition: transform .4s ease, filter .4s ease;
+}
+.project-gallery-link:hover,
+.project-gallery-link:focus-visible{
+  border-color: var(--border-glow);
+  box-shadow: 0 0 18px -2px rgba(34,211,238,0.5);
+}
+.project-gallery-link:hover img,
+.project-gallery-link:focus-visible img{
+  transform: scale(1.07);
+  filter: brightness(0.82);
+}
+.project-gallery-overlay{
+  position:absolute;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background: rgba(7,11,18,0);
+  opacity:0;
+  transition: opacity .3s ease, background .3s ease;
+}
+.project-gallery-link:hover .project-gallery-overlay,
+.project-gallery-link:focus-visible .project-gallery-overlay{
+  opacity:1;
+  background: rgba(7,11,18,0.32);
+}
+.project-gallery-overlay svg{
+  width:24px; height:24px;
+  color: var(--cyan);
+  filter: drop-shadow(0 0 8px rgba(34,211,238,0.7));
+}
+.project-gallery-link:focus-visible{
+  outline: 2px solid var(--cyan);
+  outline-offset: 2px;
+}
 .project-actions{
   margin-top: 20px;
   padding: 16px 24px 22px;
@@ -629,6 +685,17 @@ p{ margin:0; }
   .project-badge-dot{ animation: none; }
 }
 .btn-demo svg{ width: 15px; height: 15px; flex-shrink: 0; }
+.btn-report svg{ width: 15px; height: 15px; flex-shrink: 0; }
+.btn-report{
+  background: rgba(34,211,238,0.05);
+  border-color: rgba(34,211,238,0.28);
+  color: var(--cyan);
+}
+.btn-report:hover{
+  border-color: var(--border-glow);
+  background: rgba(34,211,238,0.1);
+  box-shadow: 0 0 18px -2px rgba(34,211,238,0.55);
+}
 
 /* ============ CERTS ============ */
 .cert-timeline{ position:relative; padding-left: 30px; }
@@ -1493,24 +1560,19 @@ html.pl-lock, html.pl-lock body{ overflow: hidden; height: 100%; }
         <div class="project-tools">
           <span class="tag">TryHackMe</span><span class="tag">SIEM</span><span class="tag">Log Analysis</span>
         </div>
-        <div class="project-actions">
-          <a href="#" class="btn btn-primary btn-sm">View Project</a>
-        </div>
-      </article>
-
-      <!-- Project 2 -->
-      <article class="project-card glass">
-        <div class="project-top">
-          <span class="project-cat">Network Security</span>
-          <span class="project-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="5" cy="6" r="2"/><circle cx="19" cy="6" r="2"/><circle cx="12" cy="18" r="2"/><path d="M5 8v3a2 2 0 002 2h3M19 8v3a2 2 0 01-2 2h-3M12 13v3"/></svg></span>
-        </div>
-        <h3>Enterprise Network Lab</h3>
-        <p>Designed and configured enterprise network topologies — including VLANs, routing, DHCP, and DNS — with a focus on structured troubleshooting.</p>
-        <div class="project-tools">
-          <span class="tag">Cisco Packet Tracer</span><span class="tag">VLANs</span><span class="tag">Routing</span>
-        </div>
-        <div class="project-actions">
-          <a href="#" class="btn btn-primary btn-sm">View Project</a>
+        <div class="project-gallery">
+          <a href="https://drive.google.com/file/d/1EssmRzCS-VZmWnlFuGnEw7F4Ia_U_G-N/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="project-gallery-link" aria-label="Open SOC &amp; Incident Response Labs screenshot 1 on Google Drive (opens in a new tab)">
+            <img src="https://drive.google.com/thumbnail?id=1EssmRzCS-VZmWnlFuGnEw7F4Ia_U_G-N&sz=w1000" alt="SOC & Incident Response Labs screenshot 1" loading="lazy">
+            <span class="project-gallery-overlay" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 3h7v7"/><path d="M10 14L21 3"/><path d="M21 14v5a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h5"/></svg>
+            </span>
+          </a>
+          <a href="https://drive.google.com/file/d/17LVJk2j1GOFgjCfVArNyzSBgG5PbcEwa/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="project-gallery-link" aria-label="Open SOC &amp; Incident Response Labs screenshot 2 on Google Drive (opens in a new tab)">
+            <img src="https://drive.google.com/thumbnail?id=17LVJk2j1GOFgjCfVArNyzSBgG5PbcEwa&sz=w1000" alt="SOC & Incident Response Labs screenshot 2" loading="lazy">
+            <span class="project-gallery-overlay" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 3h7v7"/><path d="M10 14L21 3"/><path d="M21 14v5a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h5"/></svg>
+            </span>
+          </a>
         </div>
       </article>
 
@@ -1521,22 +1583,18 @@ html.pl-lock, html.pl-lock body{ overflow: hidden; height: 100%; }
           <span class="project-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 9V7a3 3 0 116 0v2M6 12h12M6 12a6 6 0 0012 0M6 12l-2.5-1.5M18 12l2.5-1.5M6 12l-2.5 1.5M18 12l2.5 1.5M12 15v5"/></svg></span>
         </div>
         <div class="project-badge"><span class="project-badge-dot"></span>Video Walkthrough Available</div>
-        <h3>DOM-Based XSS Security Lab</h3>
-        <p>Identified and exploited a DOM-based Cross-Site Scripting (XSS) vulnerability in a controlled web security lab environment. Analyzed client-side JavaScript behavior, traced user-controlled input to a dangerous DOM sink, and demonstrated how malicious input could be executed in the browser.</p>
+        <h3>DOM XSS Report</h3>
+        <p>Conducted a security assessment focused on identifying and analyzing a DOM-based Cross-Site Scripting (DOM XSS) vulnerability in a controlled web application environment. Documented the vulnerability, attack flow, impact, and recommended remediation steps in a professional security report.</p>
         <div class="project-tools">
           <span class="tag">Web Security</span><span class="tag">DOM XSS</span><span class="tag">JavaScript</span><span class="tag">Burp Suite</span><span class="tag">Vulnerability Assessment</span>
         </div>
         <div class="project-actions">
-          <!--
-            REPLACE-ME: swap the href below for your own video link
-            (Google Drive share URL, YouTube, Loom, etc.) whenever you're ready.
-          -->
-          <a href="https://drive.google.com/file/d/1tocN9g6FKHmNfTKJr8v7wYZIINgtIKpX/view?usp=drive_link"
+          <a href="https://drive.google.com/file/d/1qwTvNTkNiDARURlypvR23pWnA5Tj_Bcr/view?usp=sharing"
              target="_blank" rel="noopener noreferrer"
-             class="btn btn-primary btn-sm btn-demo"
-             aria-label="Watch the DOM-based XSS exploitation demo video (opens in a new tab)">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="6 3 20 12 6 21 6 3"/></svg>
-            View Exploitation Demo
+             class="btn btn-ghost btn-sm btn-report"
+             aria-label="View the DOM XSS security report (opens in a new tab)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/><path d="M9 13h6M9 17h6M9 9h1"/></svg>
+            View Report
           </a>
         </div>
       </article>
